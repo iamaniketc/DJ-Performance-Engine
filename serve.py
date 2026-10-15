@@ -42,6 +42,7 @@ class EngineHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         if self.path.startswith('/api/assets'):
             try:
                 assets_dir = os.path.join(DIRECTORY, 'assets')
+                valid_exts = {'.png', '.jpg', '.jpeg', '.gif', '.webp'}
                 ignored_files = {'manifest.json', 'banner.jpg', 'controller-mapping.jpg'}
                 files = sorted([f for f in os.listdir(assets_dir) if os.path.splitext(f)[1].lower() in valid_exts and f not in ignored_files])
 
